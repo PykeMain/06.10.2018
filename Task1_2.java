@@ -1,0 +1,37 @@
+package edu.school.maina;
+
+import java.util.Scanner;
+
+public class Task1_2 {
+
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		int n= input.nextInt();
+		double avr=0;
+		int[] arr= new int[n];
+		for(int i=0; i<n; i++){
+			arr[i]=input.nextInt();
+			if(i%2==0){
+				avr+=arr[i];
+			}
+		}
+		avr/=n;
+		double special=arr[0]-avr;
+		int digit=0;
+		if(special<0){
+			special-=2*special;
+		}
+		for(int i=1; i<n; i++){
+			double a=arr[i]-avr;
+			if(a<0){
+				a-=a*2;
+			}
+			if(special>a){
+				special=a;
+				digit=i;
+			}
+		}
+		System.out.print(arr[digit]);
+	}
+
+}
